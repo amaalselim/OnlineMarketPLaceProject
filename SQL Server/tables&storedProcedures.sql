@@ -15,6 +15,7 @@ BEGIN
 	values(@Username,@Email,@PasswordHash,@Status,@AddressLine1,@AddressLine2,@City, @State,@PostalCode,@CountryID)
 END;
 GO
+------------------------------------------------------
 create procedure UpdateUserStatus
 	@UserID int,
 	@status int
@@ -25,6 +26,7 @@ begin
 	where UserID=@UserID
 end;
 Go
+--------------------------------------------------------
 
 create procedure CreateItem
 	@SellerID int,
@@ -43,7 +45,7 @@ begin
 end;
 
 Go
-
+----------------------------------------------------------------
 create procedure PlaceBid
 	@ItemID int,
 	@UserID int,
@@ -58,6 +60,7 @@ begin
 	where ItemID=@ItemID
 end
 Go
+---------------------------------------------------------------
 --Retrieve all items along with their respective seller information.
 select I.*,u.Username 
 from Items I join Users U 
