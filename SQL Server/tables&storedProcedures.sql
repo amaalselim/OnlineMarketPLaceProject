@@ -70,21 +70,20 @@ on U.UserID=I.SellerID
 --Retrieve all users along with their items, if they have any.
 select * from Users u
 left join Items I on u.UserID=i.SellerID
-where i.ItemID is not null
 
 --Retrieve all users and their items, showing all users and all items, even if there is no match.
 select * from Users u 
-full join Items i
+full outer join Items i
 on u.UserID=i.SellerID
 
 --Retrieve items with the number of bids each item has received.
 select i.ItemID,count(BidAmount) NumberOfBids from items i
-left join bids b on i.ItemID=b.ItemID
+join bids b on i.ItemID=b.ItemID
 group by i.ItemID
 
 --Retrieve users and the total amount they have spent on orders.
 select  u.UserID,sum(o.TotalAmount) TotalAmount from Users u
-left join orders o on u.UserID=o.BuyerID
+join orders o on u.UserID=o.BuyerID
 group by u.UserID
 
 --Retrieve items along with their category names.
